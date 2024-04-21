@@ -8,11 +8,13 @@ The Houdini Comment Tracker is a utility designed to streamline the process of m
 
 ## Features:
 
-- Versioned Comments: Easily attach comments to specific versions of nodes in your Houdini scene. Each comment includes details such as the author, timestamp, and associated node.
-- Interactive Comment Display: Utilize a user-friendly interface to navigate through different versions of nodes and view associated comments directly within the Houdini interface.
-- JSON Data Storage: Comments are stored in a JSON file format, ensuring compatibility and ease of access for sharing and collaboration across team members or projects.
-- Error Handling: Alerts users when essential JSON files are missing, guiding them to create the necessary files for seamless comment tracking.
-- Customizable Display: Tailor the presentation of comments to suit your preferences, with options for sorting, formatting, and displaying comments within the Houdini parameter interface.
+- **Versioned Comments**: Easily attach comments to specific versions of nodes in your Houdini scene. Each comment includes details such as the author, timestamp, and associated node.
+- **Node Coloring**: Nodes are color-coded to indicate whether comments exist for the selected version.
+  ![color update](https://github.com/markelv1/File-Cache-with-Comments/assets/166550328/692624a0-eccb-4d5d-a23d-32f80a5b07db)
+- **Interactive Comment Display**: Utilize a user-friendly interface to navigate through different versions of nodes and view associated comments directly within the Houdini interface.
+- **JSON Data Storage**: Comments are stored in a JSON file format, ensuring compatibility and ease of access for sharing and collaboration across team members or projects.
+- **Error Handling**: Alerts users when essential JSON files are missing, guiding them to create the necessary files for seamless comment tracking.
+- **Customizable Display**: Tailor the presentation of comments to suit your preferences, with options for sorting, formatting, and displaying comments within the Houdini parameter interface.
 
 ## Usage:
 
