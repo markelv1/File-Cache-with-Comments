@@ -1,7 +1,6 @@
+###################################################################################################        
 # Displays an error message asking to create the json file
-def jsonMissingPopup():
-    # Create a message for the popup
-    message = "The JSON file is missing. Please make sure it exists."
+def errorPopup(message):
     # Show a message dialog
     hou.ui.displayMessage(message, title="Error", severity=hou.severityType.Error)
 
@@ -35,7 +34,7 @@ def addNewComments(existing_data, new_comment):
 def readFromJson(json_file, node_name):
     if not os.path.exists(json_file):
         # If the JSON file is missing, show a popup window
-        jsonMissingPopup()
+        errorPopup("The JSON file is missing. Please make sure it exists.")
         return None
     
     with open(json_file, 'r') as file:
@@ -46,7 +45,6 @@ def readFromJson(json_file, node_name):
                 node_comments.append(version_data)
         return node_comments
 
-# Save comments in the json file
 def saveCommentToDisk():
     # Specify path to save the file
     projectpath = hou.getenv("JOB") + "/"
@@ -65,21 +63,27 @@ def saveCommentToDisk():
             # Create new file if json doesn't exist
             comments_data = {"scene_name": hou.hipFile.basename(), "versions": []}
 
-        # Define json structure
-        new_comment = {
-            "comment_id": str(len(comments_data['versions']) + 1),
-            "author": author_name,
-            "timestamp": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
-            "comment_text": comment_text,
-            "version_number": version_number,
-            "node_name": node_name
-        }
+        # Check if both comment text and author name are not empty
+        if comment_text.strip() != "" and author_name.strip() != "":
+            # Define json structure
+            new_comment = {
+                "comment_id": str(len(comments_data['versions']) + 1),
+                "author": author_name,
+                "timestamp": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+                "comment_text": comment_text,
+                "version_number": version_number,
+                "node_name": node_name
+            }
 
-        # Add new comment
-        updated_comments_data = addNewComments(comments_data, new_comment)
+            # Add new comment
+            updated_comments_data = addNewComments(comments_data, new_comment)
 
-        # Save updated comments 
-        save_comments_to_json(json_file, updated_comments_data)
+            # Save updated comments 
+            save_comments_to_json(json_file, updated_comments_data)
+        else:
+            # Warning about empty comment and author
+            errorPopup("No comment to add")
+            pass
 
     # Read comments
     comments_data = readFromJson(json_file, node_name)
@@ -144,9 +148,13 @@ def selectOnVersionMovement():
         # If there are no matched comments, display not found message
         if not matched_comments:
             displayWhenNotFound(version_value)
+            # Color the node red
+            node.setColor(hou.Color((1, 0, 0)))
         else:
             # Set the matched comments to the displaycomment parameter with spacing between them
             displayCommentsOnParms(matched_comments)
+            # Color the node green
+            node.setColor(hou.Color((0, 1, 0)))
     else:
         # Display not found message
         displayWhenNotFound(version_value)
