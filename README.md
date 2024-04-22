@@ -18,8 +18,9 @@ The Houdini Comment Tracker is a utility designed to streamline the process of m
 
 ## Usage:
 
-- Install the Houdini Comment Tracker tool by pasting the otls foler under you Houdini preferences, usually under(C:\Users\ "Username" \Documents\houdiniX.X\otls).
-- Inside houdini set up the JSON file by pressing Add Comment for storing comments.
+- Install the Houdini Comment Tracker tool by pasting the otls folder under you Houdini preferences, usually under C:\Users\ "Username" \Documents\houdiniX.X\otls
+- Under the tab menu the node is called Filecache More.
+- Set up the JSON file by pressing Add Comment for storing comments.
 - Add comments to specific nodes within your Houdini scene using the provided interface. This comments are added when pressing the Save to Disk button or if needed it is posible to add new ones with the Add Comment button.
 - Navigate through different versions (with the version slider) to view associated comments and annotations.
 
