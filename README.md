@@ -23,4 +23,4 @@ The Houdini Comment Tracker is a utility designed to streamline the process of m
 - Add comments to specific nodes within your Houdini scene using the provided interface. This comments are added when pressing the Save to Disk button or if needed it is posible to add new ones with the Add Comment button.
 - Navigate through different versions (with the version slider) to view associated comments and annotations.
 
-**Reminder**: The comment.json file is saved under $JOB so is recomended to set project before using it
+**Reminder**: The comment.json file is saved under $JOB so is recomended to set project before using it. You will also need to fill both of the parameters Author and Comment to add in order to save the comments, if you don't and error will popup saying "No comment to add"
